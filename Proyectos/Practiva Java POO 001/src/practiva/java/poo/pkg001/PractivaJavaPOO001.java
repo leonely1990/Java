@@ -16,6 +16,8 @@ public class PractivaJavaPOO001 {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+        Usuario leonel = new Usuario("Leonel", "Yamin", 36);
+        System.out.println(leonel.getNombre());
     }
     
 }
