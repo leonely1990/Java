@@ -19,6 +19,11 @@ public class PractivaJavaPOO001 {
         Usuario leonel = new Usuario("Leonel", "Yamin", 36);
         System.out.println(leonel.getNombre());
         System.out.println(leonel.getMensaje1());
+        
+        Calculadora cal = new Calculadora(10, 5);
+        System.out.println(cal.getSuma());
+        System.out.println(cal.getResta());
+        System.out.println(cal.getMulti());
     }
     
 }
