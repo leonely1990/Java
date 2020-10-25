@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package practiva.java.poo.pkg001;
+package Clases;
 
 /**
  *
@@ -11,24 +11,22 @@ package practiva.java.poo.pkg001;
  */
 public class Usuario {
     private String nombre;
-    private String apellido;
     private int edad;
-    private final String mensaje1 = "Te amo mi reina hermosa";
     
-    public Usuario(String nombre, String apellido, int edad)
+    public Usuario(String nombre, int edad)
     {
         this.nombre = nombre;
-        this.apellido = apellido;
         this.edad = edad;
+    }
+    
+    public Usuario()
+    {
+        nombre = "anonimo";
+        edad = 0;
     }
     
     public String getNombre()
     {
         return nombre;
-    }
-    
-    public String getMensaje1()
-    {
-        return mensaje1;
     }
 }
