@@ -23,11 +23,19 @@ public class Prueba {
         while(true)
         {
            menu1.mostrarMenu();
+           System.out.print(">");
            int opcion = sc.nextInt();
            switch(opcion)
            {
                case 1:
-                   menu1
+                   System.out.print("Nombre:");
+                   sc.nextLine();
+                   String nombre = sc.nextLine();
+                   System.out.print("Numero:");
+                   String numero = sc.nextLine();
+                   menu1.crearContacto(nombre, numero);
+               case 2:
+                   
            }
         }
         

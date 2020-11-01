@@ -12,8 +12,8 @@ package Clases;
 public class Menu {
     private String opcion1 = "1. Crear contacto";
     private String opcion2 = "2. Ver contactos";
-    
-    
+    private String opcionSalir = "3. Salir";
+        
     public Menu()
     {
         
@@ -23,10 +23,11 @@ public class Menu {
     {
         System.out.println(opcion1);
         System.out.println(opcion2);
+        System.out.println(opcionSalir);
     }
     
     public void crearContacto(String nombre, String numero)
     {
-        Contacto con = new Contacto();
+        Contacto con = new Contacto(nombre, numero);
     }
 }
