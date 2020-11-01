@@ -18,7 +18,8 @@ public class EstructuraDeDatos {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        List<Object> lista = new ArrayList<Object>();
+        List<Usuarios> lista;
+        lista = new ArrayList<>();
         Scanner teclado = new Scanner(System.in);
         while(true)
         {
@@ -27,6 +28,7 @@ public class EstructuraDeDatos {
             System.out.println("2. Editar Usuario");
             System.out.println("3. Ver Usuarios");
             System.out.println("4. Eliminar Usuario");
+            System.out.println("5. Salir");
             System.out.print("> ");
             int opcion = teclado.nextInt();
             teclado.nextLine();
@@ -44,15 +46,44 @@ public class EstructuraDeDatos {
                 case 2:
                     break;
                 case 3:
-                    int rueda = 0;
-                    while(true)
+                    if(lista.isEmpty())
                     {
-                        
-                        int opcion = teclado.nextInt();
-                        switch(opcion)
+                        System.out.print("Sin Usuarios!");
+                    }
+                    else
+                    {
+                        int rueda = 0;
+                        boolean ciclo = true;
+                        while(ciclo)
                         {
-                            case 1:
-                                rueda += 1;
+                            Usuarios user = lista.get(rueda);
+                        
+                            System.out.println("Nombre:"+user.getNombre());
+                            System.out.println("Edad:"+user.getEdad());
+                        
+                            System.out.println("1.Siguiente -- 2.Anterior -- 3.Salir");
+                            System.out.print(">>");
+                            int opcion2 = teclado.nextInt();
+                            switch(opcion2)
+                            {
+                                case 1:
+                                    rueda += 1;
+                                    if(rueda >= lista.size())
+                                    {
+                                        rueda = 0;
+                                    }
+                                    break;
+                                case 2:
+                                    rueda -= 1;
+                                    if(rueda < 0)
+                                    {
+                                        rueda = lista.size() - 1;
+                                    }
+                                    break;
+                                case 3:
+                                    ciclo = false;
+                                    break;
+                            }
                         }
                     }
             }
