@@ -15,4 +15,6 @@ public class Armadura {
     private int nivel;
     private int fisicoDef;
     private int magicoDef;
+    private int durabilidad;
+    private float peso;
 }

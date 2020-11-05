@@ -22,4 +22,14 @@ public class Personaje {
         this.exp = 0;
         this.prof = prof;
     }
+    
+    public void expPersonaje(int exp)
+    {
+        this.exp += exp;
+        if(this.exp >= 1000)
+        {
+            nivel += 1;
+            this.exp -= 1000;
+        }
+    }
 }
