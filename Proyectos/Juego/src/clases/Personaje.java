@@ -23,6 +23,7 @@ public class Personaje
     private double exp;
     private double ataqueMin;
     private double ataqueMax;
+    private int alcance;
     private int posX;
     private int posY;
     private final char pinta;
@@ -48,6 +49,7 @@ public class Personaje
         exp = 0;
         nivel = 1;
         pinta = '*';
+        alcance = 4;
     }
     
     /**
@@ -136,6 +138,11 @@ public class Personaje
     public int getPosY()
     {
         return posY;
+    }
+    
+    public int getAlcance()
+    {
+        return alcance;
     }
     
     /**
@@ -230,7 +237,7 @@ public class Personaje
         return dano;
     }
     
-        public boolean RangodeAtaque3x3(char mapa[][])
+    /*public boolean RangodeAtaque(char mapa[][])
     {        
         boolean bandera = false;
         
@@ -241,7 +248,7 @@ public class Personaje
             ++Y;
         }
         
-        if(Y == 49){
+        if(Y == mapa.length-1){
             --Y;
         }
         
@@ -249,7 +256,7 @@ public class Personaje
             ++X;
         }
         
-        if(X == 49){
+        if(X == mapa.length-1){
             --X;
         }
         
@@ -259,6 +266,39 @@ public class Personaje
                    bandera = true;
                 }
             }
+        }
+        
+        return bandera;
+    }*/
+    
+    public boolean Rango(char mapa[][], Enemigo enemigo)
+    {
+        boolean bandera = false;
+        
+        int pxMin = posX - alcance;
+        int pxMax = posX + alcance;
+        int pyMin = posY - alcance;
+        int pyMax = posY + alcance;
+        
+        if(pxMin < 0){
+            pxMin = 0;
+        }
+        
+        if(pxMax > mapa.length-1){
+            pxMax = mapa.length-1;
+        }
+        
+        if(pyMin < 0){
+            pyMin = 0;
+        }
+        
+        if(pyMax > mapa.length-1){
+            pyMax = mapa.length-1;
+        }
+        
+        if((enemigo.getPosX() >= pxMin) && (enemigo.getPosX() <= pxMax) && 
+                (enemigo.getPosY() >= pyMin) && (enemigo.getPosY() <= pyMax)){
+            bandera = true;
         }
         
         return bandera;

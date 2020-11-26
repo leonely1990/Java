@@ -34,8 +34,8 @@ public class Enemigo
         this.ataqueMin = ataqueMin;
         this.ataqueMax = ataqueMax;
         vida = vidaTotal;
-        posX = 49;
-        posY = 49;
+        posX = 30;
+        posY = 31;
         pinta = 'o';
     }
     
