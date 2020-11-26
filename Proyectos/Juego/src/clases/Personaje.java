@@ -146,7 +146,7 @@ public class Personaje
     public int CaminarArriba()
     {
         --posY;
-        if(posY <= 0){
+        if(posY < 0){
             posY = 0;
         }
         return posY;
@@ -168,8 +168,8 @@ public class Personaje
     public int CaminarAbajo()
     {
         ++posY;
-        if(posY > 50){
-            posY = 50;
+        if(posY > 49){
+            posY = 49;
         }
         return posY;
     }
@@ -177,8 +177,8 @@ public class Personaje
     public int CaminarAbajo(int abajo)
     {
         posY += abajo;
-        if(posY > 50){
-            posY = 50;
+        if(posY > 49){
+            posY = 49;
         }
         return posY;
     }
@@ -186,8 +186,8 @@ public class Personaje
     public int CaminarDerecha()
     {
         ++posX;
-        if(posX > 50){
-            posX = 50;
+        if(posX > 49){
+            posX = 49;
         }
         return posX;
     }
@@ -195,8 +195,8 @@ public class Personaje
     public int CaminarDerecha(int derecha)
     {
         posX += derecha;
-        if(posX > 50){
-            posX = 50;
+        if(posX > 49){
+            posX = 49;
         }
         return posX;
     }
@@ -230,6 +230,40 @@ public class Personaje
         return dano;
     }
     
+        public boolean RangodeAtaque3x3(char mapa[][])
+    {        
+        boolean bandera = false;
+        
+        int X = posX;
+        int Y = posY;
+        
+        if(Y == 0){
+            ++Y;
+        }
+        
+        if(Y == 49){
+            --Y;
+        }
+        
+        if(X == 0){
+            ++X;
+        }
+        
+        if(X == 49){
+            --X;
+        }
+        
+        for(int i=Y-1; i<=Y+1; i++){
+           for(int j=X-1; j<=X+1; j++){
+               if(mapa[i][j] == 'o' ){
+                   bandera = true;
+                }
+            }
+        }
+        
+        return bandera;
+    }
+    
     @Override
     public String toString()
     {
@@ -237,3 +271,12 @@ public class Personaje
         ", Mana: " + mana + "/" + manaTotal + "]";
     }
 }
+
+/*for(int i=posY-1; i<=posY+1; i++){
+           for(int j=posX-1; j<=posX+1; j++){
+               if(mapa[i][j] == 'o' ){
+                   bandera = true;
+                }
+            }
+        }
+*/
