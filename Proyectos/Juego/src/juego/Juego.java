@@ -22,7 +22,7 @@ public class Juego {
     public static void main(String[] args) {
         // TODO code application logic here
         Scanner teclado = new Scanner(System.in);
-        Mapa m1 = new Mapa(50, 50);
+        Mapa m1 = new Mapa(50, 60);
         m1.CrearMapa();
         Personaje p1 = new Personaje("Leonel");
 
@@ -35,6 +35,7 @@ public class Juego {
             {
                 System.out.println("1.Subir - 2.Bajar - 3.Derecha - 4.Izquiera"
                         + " - 5.Atacar");
+                System.out.print(">");
                 int opcion = teclado.nextInt();
                 Menu1(opcion, p1);
             }
@@ -42,6 +43,7 @@ public class Juego {
             {
                 System.out.println("1.Subir - 2.Bajar - 3.Derecha - "
                         + "4.Izquiera");
+                System.out.print(">");
                 int opcion = teclado.nextInt();
                 Menu2(opcion, p1);
             }
