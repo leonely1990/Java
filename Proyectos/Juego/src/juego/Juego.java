@@ -24,6 +24,11 @@ public class Juego {
         Scanner teclado = new Scanner(System.in);
         Personaje p1 = new Personaje("Leonel");
         Enemigo e1 = new Enemigo("Rata", 1, 8, 15, 1);
+        e1.setPosX(27);
+        e1.setPosY(27);
+        Enemigo e2 = new Enemigo("Conejo", 1, 8, 15, 1);
+        e2.setPosX(26);
+        e2.setPosY(26);
         Mapa m1 = new Mapa(50, 50);
         
         System.out.println(p1);
@@ -33,8 +38,8 @@ public class Juego {
         
         m1.CrearMapa();
         while (true) {            
-            m1.verMapa(p1, e1);
-            if(p1.Rango(m1.getMapa(), e1)){
+            m1.verMapa(p1, e1, e2);
+            if(p1.Rango(m1.getMapa(), e1, e2)){
                 System.out.println("1.Subir - 2.Bajar - 3.Derecha - "
                         + "4.Izquierda - 5.Atacar");
                 opcion = teclado.nextInt();

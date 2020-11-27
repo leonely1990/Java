@@ -58,7 +58,7 @@ public class Mapa
         }
     }
     
-    public void verMapa(Personaje personaje, Enemigo enemigo)
+    public void verMapa(Personaje personaje, Enemigo... enemigo)
     {
         for(int i=0; i<mapa.length; i++)
         {
@@ -69,7 +69,10 @@ public class Mapa
         }
         
         mapa[personaje.getPosY()][personaje.getPosX()] = personaje.getPinta();
-        mapa[enemigo.getPosY()][enemigo.getPosX()] = enemigo.getPinta();
+        for(int j=0; j<enemigo.length; j++)
+        {
+            mapa[enemigo[j].getPosY()][enemigo[j].getPosX()] = enemigo[j].getPinta();
+        }
         
         for(int i=0; i<mapa.length; i++)
         {

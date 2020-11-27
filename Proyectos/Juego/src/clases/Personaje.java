@@ -145,6 +145,21 @@ public class Personaje
         return alcance;
     }
     
+    public void setExp(Enemigo e)
+    {
+        exp += e.getExp();
+        if(exp >= 100)
+        {
+            setNivel();
+        }
+    }
+    
+    private void setNivel()
+    {
+        ++nivel;
+        vidaTotal = (nivel * 100);
+    }
+    
     /**
      * Este metodo resta 1 la posicion en Y del personaje, si la posicion llega a 0
      * no continuara restando por ende el personaje no caminara hacia arriba el valor
@@ -271,9 +286,13 @@ public class Personaje
         return bandera;
     }*/
     
-    public boolean Rango(char mapa[][], Enemigo enemigo)
+    public boolean Rango(char mapa[][], Enemigo... enemigo)
     {
         boolean bandera = false;
+        
+        Enemigo[] enemigos = new Enemigo[5];
+        int i = 0;
+        int z = 0;
         
         int pxMin = posX - alcance;
         int pxMax = posX + alcance;
@@ -296,10 +315,22 @@ public class Personaje
             pyMax = mapa.length-1;
         }
         
-        if((enemigo.getPosX() >= pxMin) && (enemigo.getPosX() <= pxMax) && 
-                (enemigo.getPosY() >= pyMin) && (enemigo.getPosY() <= pyMax)){
+        for(int h=0; h<enemigo.length; h++)
+        {
+            if((enemigo[h].getPosX() >= pxMin) && (enemigo[h].getPosX() <= pxMax) && 
+                (enemigo[h].getPosY() >= pyMin) && (enemigo[h].getPosY() <= pyMax)){
             bandera = true;
-            System.out.println("Enemigo en X:" + pxMax + " Y:" + pyMin);
+            enemigos[i] = enemigo[h];
+            i++;
+            System.out.println("Enemigo en X:" + enemigo[h].getPosX() +
+                    " Y:" + enemigo[h].getPosY());
+            }
+        }
+                
+        for(int j=0; j<i; j++)
+        {
+            String nombre = enemigos[j].getNombre();
+            System.out.println("Enemigo: " + nombre);
         }
         
         return bandera;

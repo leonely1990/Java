@@ -37,8 +37,8 @@ public class Enemigo
         this.ataqueMin = ataqueMin;
         this.ataqueMax = ataqueMax;
         vida = vidaTotal;
-        posX = 0;
-        posY = 0;
+        posX = 30;
+        posY = 30;
         pinta = 'o';
     }
     
@@ -80,6 +80,16 @@ public class Enemigo
     public int getPosY()
     {
         return posY;
+    }
+    
+    public void setPosX(int posX)
+    {
+        this.posX = posX;
+    }
+    
+    public void setPosY(int posY)
+    {
+        this.posY = posY;
     }
     
     @Override
