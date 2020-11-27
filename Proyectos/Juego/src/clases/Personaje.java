@@ -292,7 +292,6 @@ public class Personaje
         
         Enemigo[] enemigos = new Enemigo[5];
         int i = 0;
-        int z = 0;
         
         int pxMin = posX - alcance;
         int pxMax = posX + alcance;
@@ -315,22 +314,21 @@ public class Personaje
             pyMax = mapa.length-1;
         }
         
-        for(int h=0; h<enemigo.length; h++)
+        for(int j=0; j<enemigo.length; j++)
         {
-            if((enemigo[h].getPosX() >= pxMin) && (enemigo[h].getPosX() <= pxMax) && 
-                (enemigo[h].getPosY() >= pyMin) && (enemigo[h].getPosY() <= pyMax)){
+            if((enemigo[j].getPosX() >= pxMin) && (enemigo[j].getPosX() <= pxMax) && 
+                (enemigo[j].getPosY() >= pyMin) && (enemigo[j].getPosY() <= pyMax)){
             bandera = true;
-            enemigos[i] = enemigo[h];
+            enemigos[i] = enemigo[j];
             i++;
-            System.out.println("Enemigo en X:" + enemigo[h].getPosX() +
-                    " Y:" + enemigo[h].getPosY());
+            //System.out.println("Enemigo en X:" + enemigo[j].getPosX() +
+            //        " Y:" + enemigo[j].getPosY());
             }
         }
                 
         for(int j=0; j<i; j++)
         {
-            String nombre = enemigos[j].getNombre();
-            System.out.println("Enemigo: " + nombre);
+            System.out.println(enemigos[j]);
         }
         
         return bandera;

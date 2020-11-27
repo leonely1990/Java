@@ -95,7 +95,7 @@ public class Enemigo
     @Override
     public String toString()
     {
-        return "Enemigo [Nombre: " + nombre + ", Vida: " + vida +
+        return "Enemigo [Nombre:" + nombre + ", Vida:" + vida +
                 "/" + vidaTotal + ", Nivel:" + nivel + ", Exp:" + exp + "]";
     }
 }
