@@ -343,12 +343,3 @@ public class Personaje
         ", Mana: " + mana + "/" + manaTotal + "]";
     }
 }
-
-/*for(int i=posY-1; i<=posY+1; i++){
-           for(int j=posX-1; j<=posX+1; j++){
-               if(mapa[i][j] == 'o' ){
-                   bandera = true;
-                }
-            }
-        }
-*/

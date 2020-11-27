@@ -22,38 +22,30 @@ public class Juego {
     public static void main(String[] args) {
         // TODO code application logic here
         Scanner teclado = new Scanner(System.in);
-        Personaje p1 = new Personaje("Leonel");
-        Enemigo e1 = new Enemigo("Rata", 1, 8, 15, 1);
-        e1.setPosX(27);
-        e1.setPosY(27);
-        Enemigo e2 = new Enemigo("Conejo", 1, 8, 15, 1);
-        e2.setPosX(26);
-        e2.setPosY(26);
         Mapa m1 = new Mapa(50, 50);
-        
-        System.out.println(p1);
-        System.out.println(e1);
-        
-        int opcion;
-        
         m1.CrearMapa();
-        while (true) {            
-            m1.verMapa(p1, e1, e2);
-            if(p1.Rango(m1.getMapa(), e1, e2)){
-                System.out.println("1.Subir - 2.Bajar - 3.Derecha - "
-                        + "4.Izquierda - 5.Atacar");
-                opcion = teclado.nextInt();
+        Personaje p1 = new Personaje("Leonel");
+
+        Enemigo[] e = FabricaEnemigos("Rata", 6);
+        
+        while(true)
+        {
+            m1.verMapa(p1, e);
+            if(p1.Rango(m1.getMapa(), e))
+            {
+                System.out.println("1.Subir - 2.Bajar - 3.Derecha - 4.Izquiera"
+                        + " - 5.Atacar");
+                int opcion = teclado.nextInt();
                 Menu1(opcion, p1);
-            }else{
+            }
+            else
+            {
                 System.out.println("1.Subir - 2.Bajar - 3.Derecha - "
-                        + "4.Izquierda");
-                opcion = teclado.nextInt();
+                        + "4.Izquiera");
+                int opcion = teclado.nextInt();
                 Menu2(opcion, p1);
             }
         }
-       
-        
-        
     }
     
     public static void Menu1(int opcion, Personaje per){
@@ -98,5 +90,21 @@ public class Juego {
                 System.out.println("Opcion incorrecta");
                 break;
         }
+    }
+    
+    public static Enemigo[] FabricaEnemigos(String nombre, int cantidad)
+    {
+        Enemigo[] enemigos = new Enemigo[cantidad];
+        
+        for(int i=0; i<cantidad; i++)
+        {
+            double posx = Math.round(Math.random() * 30);
+            double posy = Math.round(Math.random() * 30);
+            enemigos[i] = new Enemigo(nombre, 1, 2, 5, 1);
+            enemigos[i].setPosX((int)posx);
+            enemigos[i].setPosY((int)posy);
+        }
+        
+        return enemigos;
     }
 }
