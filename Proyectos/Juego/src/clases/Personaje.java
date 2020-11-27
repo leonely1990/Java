@@ -299,6 +299,7 @@ public class Personaje
         if((enemigo.getPosX() >= pxMin) && (enemigo.getPosX() <= pxMax) && 
                 (enemigo.getPosY() >= pyMin) && (enemigo.getPosY() <= pyMax)){
             bandera = true;
+            System.out.println("Enemigo en X:" + pxMax + " Y:" + pyMin);
         }
         
         return bandera;

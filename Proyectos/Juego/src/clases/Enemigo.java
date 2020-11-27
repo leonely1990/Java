@@ -15,6 +15,7 @@ public class Enemigo
     // Atributos
     private final String nombre;
     private final int vidaTotal;
+    private final int nivel;
     public int vida;
     private final double exp;
     private final double ataqueMin;
@@ -26,16 +27,18 @@ public class Enemigo
     /**
      * Constructor para objetos de la clase Enemigo
      */
-    public Enemigo(String nombre, int vidaTotal, double exp, double ataqueMin, double ataqueMax)
+    public Enemigo(String nombre, int nivel, double ataqueMin, 
+            double ataqueMax, int dificultad)
     {
         this.nombre = nombre;
-        this.vidaTotal = vidaTotal;
-        this.exp = exp;
+        this.vidaTotal = (nivel * 100) / dificultad;
+        this.nivel = nivel;
+        this.exp = nivel * dificultad;
         this.ataqueMin = ataqueMin;
         this.ataqueMax = ataqueMax;
         vida = vidaTotal;
-        posX = 30;
-        posY = 31;
+        posX = 0;
+        posY = 0;
         pinta = 'o';
     }
     
@@ -82,6 +85,7 @@ public class Enemigo
     @Override
     public String toString()
     {
-        return "Enemigo [Nombre: " + nombre + ", Vida: " + vida + "/" + vidaTotal + "]";
+        return "Enemigo [Nombre: " + nombre + ", Vida: " + vida +
+                "/" + vidaTotal + ", Nivel:" + nivel + ", Exp:" + exp + "]";
     }
 }

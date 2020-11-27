@@ -23,7 +23,7 @@ public class Juego {
         // TODO code application logic here
         Scanner teclado = new Scanner(System.in);
         Personaje p1 = new Personaje("Leonel");
-        Enemigo e1 = new Enemigo("Rata", 100, 15, 1, 5);
+        Enemigo e1 = new Enemigo("Rata", 1, 8, 15, 1);
         Mapa m1 = new Mapa(50, 50);
         
         System.out.println(p1);
