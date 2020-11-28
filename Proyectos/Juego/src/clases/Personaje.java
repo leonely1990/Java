@@ -5,6 +5,8 @@
  */
 package clases;
 
+import java.util.ArrayList;
+
  /**
  * Clase que crea personajes
  * 
@@ -15,41 +17,48 @@ public class Personaje
 {
     // Atributos
     private final String nombre;
-    private double vidaTotal;
-    public double vida;
-    private double manaTotal;
-    private double mana;
+    private int vidaTotal;
+    public int vida;
+    private int manaTotal;
+    private int mana;
     private int nivel;
-    private double exp;
-    private double ataqueMin;
-    private double ataqueMax;
+    private int exp;
+    private int ataqueMin;
+    private int ataqueMax;
     private int alcance;
     private int posX;
     private int posY;
     private final char pinta;
+    
+    /**
+     * Bloque de Codigo Inicializador.
+     * 
+     * El siguiente bloque de codigo inicializa todas las variables por
+     * defecto.
+     */
+    {
+        //Inicializar manaTotal
+        vidaTotal = 100;
+        vida = vidaTotal;
+        manaTotal = 100;
+        mana = manaTotal;
+        nivel = 1;
+        exp = 0;
+        ataqueMin = 10;
+        ataqueMax = 15;
+        alcance = 1;
+        posX = (int)Math.round(Math.random()*30);
+        posY = (int)Math.round(Math.random()*30);
+        pinta = 'x';
+    }
 
     /**
      * Constructor de objetos de la clase Personaje.
-     * 
-     * El personaje comenzara con un nivel de 1 y exp 0, tambien tendra ataque min y max en 1
-     * su posicion en el mapa de juego sera (X=25, Y=25) la vida y el mana estaran en 100
      */
     public Personaje(String nombre)
     {
         // initialise instance variables
         this.nombre = nombre;
-        vidaTotal = 100;
-        vida = vidaTotal;
-        manaTotal = 100;
-        mana = manaTotal;
-        ataqueMin = 1;
-        ataqueMax = 1;
-        posX = 25;
-        posY = 25;
-        exp = 0;
-        nivel = 1;
-        pinta = '*';
-        alcance = 4;
     }
     
     /**
@@ -140,7 +149,7 @@ public class Personaje
         return posY;
     }
     
-    public int getAlcance()
+    public int getRango()
     {
         return alcance;
     }
@@ -150,6 +159,7 @@ public class Personaje
         exp += e.getExp();
         if(exp >= 100)
         {
+            exp -= 100;
             setNivel();
         }
     }
@@ -157,7 +167,8 @@ public class Personaje
     private void setNivel()
     {
         ++nivel;
-        vidaTotal = (nivel * 100);
+        vidaTotal += 20;
+        manaTotal += 20;
     }
     
     /**
@@ -286,11 +297,10 @@ public class Personaje
         return bandera;
     }*/
     
-    public boolean Rango(char mapa[][], Enemigo... enemigo)
+    public boolean Rango(char mapa[][], ArrayList<Enemigo> enemigo)
     {
         boolean bandera = false;
         
-        Enemigo[] enemigos = new Enemigo[5];
         int i = 0;
         
         int pxMin = posX - alcance;
@@ -314,30 +324,37 @@ public class Personaje
             pyMax = mapa.length-1;
         }
         
-        for(int j=0; j<enemigo.length; j++)
+        for(int j=0; j<enemigo.size(); j++)
         {
-            if((enemigo[j].getPosX() >= pxMin) && (enemigo[j].getPosX() <= pxMax) && 
-                (enemigo[j].getPosY() >= pyMin) && (enemigo[j].getPosY() <= pyMax)){
+            if((enemigo.get(j).getPosX() >= pxMin) && 
+               (enemigo.get(j).getPosX() <= pxMax) && 
+               (enemigo.get(j).getPosY() >= pyMin) && 
+               (enemigo.get(j).getPosY() <= pyMax))
+            {
             bandera = true;
-            enemigos[i] = enemigo[j];
+            //enemigos[i] = enemigo[j];
             i++;
-            //System.out.println("Enemigo en X:" + enemigo[j].getPosX() +
-            //        " Y:" + enemigo[j].getPosY());
             }
         }
                 
         for(int j=0; j<i; j++)
         {
-            System.out.println(enemigos[j]);
+            System.out.println(enemigo.get(j));
         }
         
         return bandera;
     }
     
+    public void recibirDano(int dano)
+    {
+        vida -= dano;
+    }
+    
     @Override
     public String toString()
     {
-        return "Personaje [Nombre: " + nombre + ", Nivel: " + nivel + ", Exp: " + exp + ", Vida: " + vida + "/" + vidaTotal + 
-        ", Mana: " + mana + "/" + manaTotal + "]";
+        return "Personaje [Nombre:" + nombre + ", Nivel:" + nivel + ", Exp:" + 
+                exp + ", Vida:" + vida + "/" + vidaTotal + 
+        ", Mana:" + mana + "/" + manaTotal + "]";
     }
 }

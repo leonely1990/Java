@@ -15,30 +15,28 @@ public class Enemigo
     // Atributos
     private final String nombre;
     private final int vidaTotal;
-    private final int nivel;
-    public int vida;
-    private final double exp;
+    private int nivel;
+    private int vida;
+    private final int exp;
     private final double ataqueMin;
     private final double ataqueMax;
     private int posX;
     private int posY;
     private final char pinta;
-
+    
     /**
      * Constructor para objetos de la clase Enemigo
      */
-    public Enemigo(String nombre, int nivel, double ataqueMin, 
-            double ataqueMax, int dificultad)
+    public Enemigo(String nombre, int nivel, int dificultad)
     {
         this.nombre = nombre;
-        this.vidaTotal = (nivel * 100) / dificultad;
         this.nivel = nivel;
-        this.exp = nivel * dificultad;
-        this.ataqueMin = ataqueMin;
-        this.ataqueMax = ataqueMax;
+        
+        vidaTotal = 100 * nivel;
         vida = vidaTotal;
-        posX = 30;
-        posY = 30;
+        exp = nivel * dificultad;
+        ataqueMin = 1;
+        ataqueMax = 5;
         pinta = 'o';
     }
     
@@ -52,7 +50,7 @@ public class Enemigo
         return vida;
     }
     
-    public double getExp()
+    public int getExp()
     {
         return exp;
     }
@@ -90,6 +88,17 @@ public class Enemigo
     public void setPosY(int posY)
     {
         this.posY = posY;
+    }
+    
+    public double atacar()
+    {
+        double dano = Math.random() * (ataqueMax - ataqueMin) + ataqueMin;
+        return dano;
+    }
+    
+    public void recibirDano(int dano)
+    {
+        vida -= dano;
     }
     
     @Override

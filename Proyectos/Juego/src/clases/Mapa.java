@@ -4,6 +4,9 @@
  * and open the template in the editor.
  */
 package clases;
+
+import java.util.ArrayList;
+
 /**
  * Write a description of class Mapa here.
  * 
@@ -58,7 +61,7 @@ public class Mapa
         }
     }
     
-    public void verMapa(Personaje personaje, Enemigo... enemigo)
+    public void verMapa(Personaje personaje, ArrayList<Enemigo> enemigo)
     {
         for(int i=0; i<mapa.length; i++)
         {
@@ -69,9 +72,10 @@ public class Mapa
         }
         
         mapa[personaje.getPosY()][personaje.getPosX()] = personaje.getPinta();
-        for(int j=0; j<enemigo.length; j++)
+        for(int j=0; j<enemigo.size(); j++)
         {
-            mapa[enemigo[j].getPosY()][enemigo[j].getPosX()] = enemigo[j].getPinta();
+            mapa[enemigo.get(j).getPosY()][enemigo.get(j).getPosX()] = 
+                    enemigo.get(j).getPinta();
         }
         
         for(int i=0; i<mapa.length; i++)
