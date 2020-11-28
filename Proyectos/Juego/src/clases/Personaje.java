@@ -29,6 +29,7 @@ public class Personaje
     private int posX;
     private int posY;
     private final char pinta;
+    private int senal;
     
     /**
      * Bloque de Codigo Inicializador.
@@ -147,6 +148,11 @@ public class Personaje
     public int getPosY()
     {
         return posY;
+    }
+    
+    public int getSenal()
+    {
+        return senal;
     }
     
     public int getRango()
@@ -332,7 +338,7 @@ public class Personaje
                (enemigo.get(j).getPosY() <= pyMax))
             {
             bandera = true;
-            //enemigos[i] = enemigo[j];
+            senal = j;
             i++;
             }
         }

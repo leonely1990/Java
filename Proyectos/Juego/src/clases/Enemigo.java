@@ -80,6 +80,11 @@ public class Enemigo
         return posY;
     }
     
+    public String getXY()
+    {
+        return "[X:" + posX + " Y:" + posY + "]";
+    }
+    
     public void setPosX(int posX)
     {
         this.posX = posX;

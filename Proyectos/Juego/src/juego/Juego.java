@@ -27,7 +27,7 @@ public class Juego {
         m1.CrearMapa();
         Personaje p1 = new Personaje("Leonel");
 
-        ArrayList<Enemigo> e = FabricaEnemigos("Rata", 3);
+        ArrayList<Enemigo> e = FabricaEnemigos("Rata", 6);
         
         while(true)
         {
@@ -106,7 +106,7 @@ public class Juego {
         {
             double posx = Math.round(Math.random() * 30);
             double posy = Math.round(Math.random() * 30);
-            enemigos.add(new Enemigo(nombre, 1, 5));
+            enemigos.add(new Enemigo(nombre, 1, 10));
             enemigos.get(i).setPosX((int)posx);
             enemigos.get(i).setPosY((int)posy);
         }
@@ -137,7 +137,7 @@ public class Juego {
                 {
                     bandera = false;
                     personaje.setExp(enemigo.get(i));
-                    enemigo.remove(i);
+                    enemigo.remove(personaje.getSenal());
                     break;
                 }
                 dano = (int)Math.round(enemigo.get(i).atacar());

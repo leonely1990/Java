@@ -87,6 +87,12 @@ public class Mapa
             System.out.println();
         }
         
-        System.out.println("X:" + personaje.getPosX() + " Y:" + personaje.getPosY());
+        System.out.println("X:" + personaje.getPosX() + " Y:" + 
+                personaje.getPosY());
+        
+        for(int i=0; i<enemigo.size(); i++)
+        {
+            System.out.println(enemigo.get(i).getXY());
+        }
     }
 }
