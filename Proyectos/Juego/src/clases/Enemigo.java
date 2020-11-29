@@ -15,7 +15,7 @@ public class Enemigo
     // Atributos
     private final String nombre;
     private final int vidaTotal;
-    private int nivel;
+    private final int nivel;
     private int vida;
     private final int exp;
     private final double ataqueMin;
@@ -27,12 +27,11 @@ public class Enemigo
     /**
      * Constructor para objetos de la clase Enemigo
      */
-    public Enemigo(String nombre, int nivel, int dificultad)
+    public Enemigo(String nombre, int nivel, int dificultad, int vidaTotal)
     {
         this.nombre = nombre;
-        this.nivel = nivel;
-        
-        vidaTotal = 100 * nivel;
+        this.nivel = nivel;        
+        this.vidaTotal = vidaTotal;
         vida = vidaTotal;
         exp = nivel * dificultad;
         ataqueMin = 1;

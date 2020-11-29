@@ -268,42 +268,8 @@ public class Personaje
         double dano = Math.random() * (ataqueMax - ataqueMin) + ataqueMin;
         return dano;
     }
-    
-    /*public boolean RangodeAtaque(char mapa[][])
-    {        
-        boolean bandera = false;
-        
-        int X = posX;
-        int Y = posY;
-        
-        if(Y == 0){
-            ++Y;
-        }
-        
-        if(Y == mapa.length-1){
-            --Y;
-        }
-        
-        if(X == 0){
-            ++X;
-        }
-        
-        if(X == mapa.length-1){
-            --X;
-        }
-        
-        for(int i=Y-1; i<=Y+1; i++){
-           for(int j=X-1; j<=X+1; j++){
-               if(mapa[i][j] == 'o' ){
-                   bandera = true;
-                }
-            }
-        }
-        
-        return bandera;
-    }*/
-    
-    public boolean Rango(char mapa[][], ArrayList<Enemigo> enemigo)
+
+    public boolean rango(char mapa[][], ArrayList<Enemigo> enemigo)
     {
         boolean bandera = false;
         

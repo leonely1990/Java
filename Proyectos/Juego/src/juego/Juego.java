@@ -32,7 +32,7 @@ public class Juego {
         while(true)
         {
             m1.verMapa(p1, e);
-            if(p1.Rango(m1.getMapa(), e))
+            if(p1.rango(m1.getMapa(), e))
             {
                 System.out.println(p1);
                 System.out.println("1.Subir - 2.Bajar - 3.Derecha - 4.Izquiera"
@@ -106,7 +106,7 @@ public class Juego {
         {
             double posx = Math.round(Math.random() * 30);
             double posy = Math.round(Math.random() * 30);
-            enemigos.add(new Enemigo(nombre, 1, 10));
+            enemigos.add(new Enemigo(nombre, 1, 10, 50));
             enemigos.get(i).setPosX((int)posx);
             enemigos.get(i).setPosY((int)posy);
         }
