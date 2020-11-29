@@ -8,6 +8,7 @@ package juego;
 import clases.Enemigo;
 import clases.Mapa;
 import clases.Personaje;
+import graficos.Vcaracteristicas;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -26,6 +27,7 @@ public class Juego {
         Mapa m1 = new Mapa(50, 60);
         m1.CrearMapa();
         Personaje p1 = new Personaje("Leonel");
+        Vcaracteristicas cp1 = new Vcaracteristicas(p1);
 
         ArrayList<Enemigo> e = FabricaEnemigos("Rata", 6);
         
@@ -34,18 +36,16 @@ public class Juego {
             m1.verMapa(p1, e);
             if(p1.rango(m1.getMapa(), e))
             {
-                System.out.println(p1);
                 System.out.println("1.Subir - 2.Bajar - 3.Derecha - 4.Izquiera"
-                        + " - 5.Atacar");
+                        + " - 5.Atacar - 6.Caracteristicas");
                 System.out.print(">");
                 int opcion = teclado.nextInt();
                 Menu1(opcion, p1, e);
             }
             else
             {
-                System.out.println(p1);
                 System.out.println("1.Subir - 2.Bajar - 3.Derecha - "
-                        + "4.Izquiera");
+                        + "4.Izquiera - 5.Caracteristicas");
                 System.out.print(">");
                 int opcion = teclado.nextInt();
                 Menu2(opcion, p1, e);
@@ -71,6 +71,9 @@ public class Juego {
             case 5:
                 Ataque(per, e);
                 break;
+            case 6:
+                per.caracteristicas();
+                break;
             default:
                 System.out.println("Opcion incorrecta");
                 break;
@@ -92,6 +95,9 @@ public class Juego {
             case 4:
                 per.CaminarIzquierda();
                 break;
+            case 5:
+                per.caracteristicas();
+                break;
             default:
                 System.out.println("Opcion incorrecta");
                 break;
@@ -106,7 +112,7 @@ public class Juego {
         {
             double posx = Math.round(Math.random() * 30);
             double posy = Math.round(Math.random() * 30);
-            enemigos.add(new Enemigo(nombre, 1, 10, 50));
+            enemigos.add(new Enemigo(nombre, 10, 10, 50));
             enemigos.get(i).setPosX((int)posx);
             enemigos.get(i).setPosY((int)posy);
         }

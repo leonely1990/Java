@@ -5,6 +5,7 @@
  */
 package clases;
 
+import graficos.Vcaracteristicas;
 import java.util.ArrayList;
 
  /**
@@ -30,6 +31,8 @@ public class Personaje
     private int posY;
     private final char pinta;
     private int senal;
+    private Equipo e;
+    private Vcaracteristicas c;
     
     /**
      * Bloque de Codigo Inicializador.
@@ -51,19 +54,23 @@ public class Personaje
         posX = (int)Math.round(Math.random()*30);
         posY = (int)Math.round(Math.random()*30);
         pinta = 'x';
+        c = new Vcaracteristicas(this);
     }
 
     /**
      * Constructor de objetos de la clase Personaje.
+     * @param nombre
      */
     public Personaje(String nombre)
     {
         // initialise instance variables
         this.nombre = nombre;
+        e = new Equipo();
     }
     
     /**
      * Devuelve el nombre del personaje
+     * @return 
      */
     public String getNombre()
     {
@@ -72,6 +79,7 @@ public class Personaje
     
     /**
      * Devuelve la experiencia del personaje
+     * @return 
      */
     public double getExp()
     {
@@ -80,6 +88,7 @@ public class Personaje
     
     /**
      * Devuelve el nivel del personaje
+     * @return 
      */
     public int getNivel()
     {
@@ -88,6 +97,7 @@ public class Personaje
     
     /**
      * Devuelve el total del ataque minimo del personaje
+     * @return 
      */
     public double getAtaqueMin()
     {
@@ -96,6 +106,7 @@ public class Personaje
     
     /**
      * Devuelve el total del ataque maximo del personaje
+     * @return 
      */
     public double getAtaqueMax()
     {
@@ -105,7 +116,7 @@ public class Personaje
     /**
      * Devuelve la vida total del personaje
      */
-    private double getVidaTotal()
+    public double getVidaTotal()
     {
         return vidaTotal;
     }
@@ -113,13 +124,14 @@ public class Personaje
     /**
      * Devuelve el mana total del personaje
      */
-    private double getManaTotal()
+    public double getManaTotal()
     {
         return manaTotal;
     }
     
     /**
      * Devuelve la vida actual del personaje
+     * @return 
      */
     public double getVida()
     {
@@ -128,6 +140,7 @@ public class Personaje
     
     /**
      * Devuelve el mana actual del personaje
+     * @return 
      */
     public double getMana()
     {
@@ -136,6 +149,7 @@ public class Personaje
     
     /**
      * Devuelve la posicion del personaje con respecto a X
+     * @return 
      */
     public int getPosX()
     {
@@ -144,6 +158,7 @@ public class Personaje
     
     /**
      * Devuelve la posicion del personaje con respecto a Y
+     * @return 
      */
     public int getPosY()
     {
@@ -175,12 +190,15 @@ public class Personaje
         ++nivel;
         vidaTotal += 20;
         manaTotal += 20;
+        vida = vidaTotal;
+        mana = manaTotal;
     }
     
     /**
      * Este metodo resta 1 la posicion en Y del personaje, si la posicion llega a 0
      * no continuara restando por ende el personaje no caminara hacia arriba el valor
      * de posY sera 0
+     * @return 
      */
     public int CaminarArriba()
     {
@@ -192,8 +210,11 @@ public class Personaje
     }
     
     /**
-     * Este metodo acepta una parametro de tipo entero el cual sera restado a la posicion del personaje,
-     * si la cantidad a restar hace que posY sea menos a 0 automaticamente posY sera 0
+     * Este metodo acepta una parametro de tipo entero el cual sera restado a 
+     * la posicion del personaje, si la cantidad a restar hace que posY sea 
+     * menos a 0 automaticamente posY sera 0
+     * @param arriba
+     * @return 
      */
     public int CaminarArriba(int arriba)
     {
@@ -322,11 +343,18 @@ public class Personaje
         vida -= dano;
     }
     
+    public void caracteristicas()
+    {
+        c.setVisible(true);
+    }
+    
     @Override
     public String toString()
     {
-        return "Personaje [Nombre:" + nombre + ", Nivel:" + nivel + ", Exp:" + 
-                exp + ", Vida:" + vida + "/" + vidaTotal + 
-        ", Mana:" + mana + "/" + manaTotal + "]";
+        return "Nombre:" + nombre + 
+               "\n Nivel:" + nivel + 
+               "\n Exp:" + exp + 
+               "\n Vida:" + vida + "/" + vidaTotal + 
+               "\n Mana:" + mana + "/" + manaTotal;
     }
 }
